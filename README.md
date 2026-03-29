@@ -11,8 +11,8 @@ Instructions:
 
 Project Group Members:
 
-* Group Member Name 1 (Student ID #, email)
-* Group Member Name 2 (Student ID #, email)
+* Jose Fernando Castillo Fernandez 20258252 fcastillofer@mun.ca
+* Dante Lozano Perez 201993267 dlozanoperez@mun.ca
 
 Project URL
 
