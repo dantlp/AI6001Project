@@ -1,5 +1,4 @@
-# AI6001_Project_Name_Here
-
+# AI6001_Project_Alien_War_Game(Worms looking game)
 Instructions:
 
 * Click the `Use this template` green button in the top-right of the repo
