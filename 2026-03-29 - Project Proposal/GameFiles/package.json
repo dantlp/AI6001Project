@@ -1,0 +1,15 @@
+{
+  "name": "alien-artillery-arena",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Alien Artillery Arena with MongoDB-backed profiles, saved games, and online rooms.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "mongodb": "^6.17.0",
+    "socket.io": "^4.8.1"
+  }
+}
