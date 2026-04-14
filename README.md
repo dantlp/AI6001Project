@@ -23,5 +23,11 @@ Project Videos:
 
 Project Setup / Installation:
 
-* Your project setup and installation instructions go here
-* Feel free to include screenshots if you want
+## Run locally
+1. Start MongoDB
+2. `npm install`
+3. `npm start`
+## Run with Docker
+1. `docker compose -f docker/docker-compose.yml up --build`
+2. Open `http://localhost:3000`
+
