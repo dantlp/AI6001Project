@@ -1,0 +1,410 @@
+:root {
+  --bg: #08111d;
+  --panel: rgba(6, 16, 28, 0.84);
+  --panel-border: rgba(186, 228, 255, 0.14);
+  --ink: #eef7ff;
+  --muted: #a9bfd8;
+  --accent: #ff8a5b;
+  --accent-2: #7cf2dc;
+  --shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+  --warning: #ffd166;
+  --success: #7ef3b8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: "Chakra Petch", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(124, 242, 220, 0.18), transparent 24%),
+    radial-gradient(circle at bottom right, rgba(255, 138, 91, 0.22), transparent 26%),
+    linear-gradient(140deg, #040910 0%, #0b1730 56%, #101c2b 100%);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+.screen {
+  position: fixed;
+  inset: 0;
+  display: none;
+}
+
+.screen-active {
+  display: flex;
+}
+
+#loginScreen,
+#setupScreen {
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.screen-card {
+  width: min(1150px, 100%);
+  border-radius: 28px;
+  border: 1px solid var(--panel-border);
+  background: var(--panel);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow);
+}
+
+.intro-card {
+  max-width: 580px;
+  padding: 32px;
+}
+
+.setup-card {
+  padding: 28px;
+  max-height: calc(100vh - 48px);
+  overflow: auto;
+}
+
+.setup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.setup-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.panel,
+.auth-panel {
+  padding: 20px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.auth-panel {
+  margin-top: 26px;
+}
+
+.eyebrow {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent-2);
+}
+
+.lead,
+.status-line,
+.scenario-card p {
+  margin-top: 12px;
+  color: var(--muted);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.field span {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+input,
+select,
+button {
+  border-radius: 16px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(3, 10, 18, 0.7);
+  color: var(--ink);
+}
+
+input[type="color"] {
+  min-height: 48px;
+  padding: 4px;
+}
+
+button {
+  border: 0;
+  padding: 11px 18px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--ink);
+  cursor: pointer;
+  transition: transform 120ms ease, background 120ms ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.16);
+}
+
+button.primary {
+  color: #26150c;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), #ffc06d);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.compact-actions {
+  margin-top: 0;
+}
+
+.scenario-card {
+  margin-top: 16px;
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.team-color-grid,
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.room-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+  max-height: 250px;
+  overflow: auto;
+}
+
+.room-card {
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.room-card h4,
+.room-card p {
+  margin: 0;
+}
+
+.room-card p {
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+.room-card .actions {
+  margin-top: 12px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  background: rgba(126, 243, 184, 0.14);
+  color: var(--success);
+}
+
+.hidden {
+  display: none !important;
+}
+
+.game-screen {
+  background: #07111f;
+}
+
+canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.game-hud,
+.game-actions,
+.control-hint,
+.overlay-message {
+  position: absolute;
+  z-index: 2;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow);
+}
+
+.game-hud {
+  top: 16px;
+  left: 16px;
+  width: min(320px, calc(100vw - 32px));
+  padding: 14px;
+  border-radius: 20px;
+  background: rgba(6, 14, 24, 0.56);
+}
+
+.hud-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.hud-label {
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.progress-block {
+  margin-top: 10px;
+}
+
+.progress-track {
+  height: 10px;
+  margin-top: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+.progress-fill {
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #7cf2dc, #ffc06d, #ff7f61);
+}
+
+.game-actions {
+  top: 16px;
+  right: 16px;
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 18px;
+  background: rgba(6, 14, 24, 0.5);
+}
+
+.control-hint {
+  left: 16px;
+  bottom: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 10px 14px;
+  border-radius: 18px;
+  background: rgba(6, 14, 24, 0.48);
+  color: var(--muted);
+}
+
+.overlay-message {
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  max-width: min(760px, calc(100vw - 40px));
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: rgba(4, 9, 16, 0.6);
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .setup-grid,
+  .team-color-grid,
+  .character-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .game-actions {
+    top: auto;
+    right: 16px;
+    bottom: 76px;
+    flex-direction: column;
+  }
+
+  .control-hint {
+    right: 16px;
+    max-width: calc(100vw - 32px);
+  }
+}
+
+@media (max-width: 640px) {
+  #loginScreen,
+  #setupScreen {
+    padding: 12px;
+  }
+
+  .intro-card,
+  .setup-card {
+    padding: 18px;
+  }
+
+  .setup-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .stack-on-mobile,
+  .compact-actions {
+    width: 100%;
+  }
+
+  .stack-on-mobile button,
+  .compact-actions button {
+    flex: 1 1 100%;
+  }
+
+  .game-hud,
+  .game-actions,
+  .control-hint {
+    left: 10px;
+    right: 10px;
+    width: auto;
+  }
+
+  .game-actions {
+    top: auto;
+    bottom: 106px;
+    justify-content: center;
+    flex-direction: row;
+  }
+
+  .control-hint {
+    bottom: 54px;
+  }
+
+  .overlay-message {
+    bottom: 10px;
+  }
+}

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alien Artillery Arena</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Chakra+Petch:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <section class="screen screen-active" id="loginScreen">
+    <div class="screen-card intro-card">
+      <p class="eyebrow">Canvas Strategy Game</p>
+      <h1>Alien Artillery Arena</h1>
+      <p class="lead">
+        Sign in, tune your fluffy alien squad, and jump into local battles or shared online game rooms.
+      </p>
+
+      <section class="auth-panel" id="authPanel">
+        <div id="authFormPanel">
+          <h2>Player Login</h2>
+          <label class="field">
+            <span>Profile Name</span>
+            <input id="usernameInput" type="text" maxlength="20" placeholder="Commander name">
+          </label>
+          <label class="field">
+            <span>Password</span>
+            <input id="passwordInput" type="password" maxlength="64" placeholder="Secret code">
+          </label>
+          <div class="actions">
+            <button id="loginBtn" class="primary">Sign In / Create</button>
+            <button id="continueSessionBtn">Continue Session</button>
+          </div>
+        </div>
+
+        <div id="signedInPanel" class="hidden">
+          <h2>Commander Ready</h2>
+          <p class="status-line" id="signedInSummary">Signed in.</p>
+          <div class="actions stack-on-mobile">
+            <button id="openGameOptionsBtn" class="primary">Game Options</button>
+            <button id="openEditBtn">Edit Squad</button>
+            <button id="logoutBtn">Sign Out</button>
+          </div>
+        </div>
+
+        <p class="status-line" id="profileStatus">No profile loaded.</p>
+      </section>
+    </div>
+  </section>
+
+  <section class="screen" id="setupScreen">
+    <div class="screen-card setup-card">
+      <div class="setup-header">
+        <div>
+          <p class="eyebrow">Match Setup</p>
+          <h2>Build The Squads</h2>
+        </div>
+        <div class="actions compact-actions">
+          <button id="editProfileBtn">Edit Profile</button>
+          <button id="backToLoginBtn">Back To Login</button>
+        </div>
+      </div>
+
+      <div class="setup-grid">
+        <section class="panel">
+          <h3>Battle Rules</h3>
+          <label class="field">
+            <span>Mode</span>
+            <select id="modeSelect">
+              <option value="ai">Player vs AI</option>
+              <option value="hotseat">Player vs Player</option>
+              <option value="online">Online Multiplayer</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Scenario</span>
+            <select id="scenarioSelect"></select>
+          </label>
+          <div class="scenario-card">
+            <h3 id="scenarioTitle">Forest Frontier</h3>
+            <p id="scenarioDescription"></p>
+          </div>
+          <div class="actions">
+            <button id="newGameBtn" class="primary">Start New Game</button>
+            <button id="resumeBtn">Resume Saved Match</button>
+          </div>
+        </section>
+
+        <section class="panel" id="onlinePanel">
+          <h3>Online Game Rooms</h3>
+          <label class="field">
+            <span>Room Name</span>
+            <input id="roomNameInput" type="text" maxlength="28" placeholder="Moonbase Lobby">
+          </label>
+          <div class="actions">
+            <button id="createRoomBtn" class="primary">Create Room</button>
+            <button id="refreshRoomsBtn">Refresh Rooms</button>
+          </div>
+          <p class="status-line" id="onlineStatus">Sign in to create or join an online room.</p>
+          <div class="room-list" id="roomList"></div>
+        </section>
+
+        <section class="panel">
+          <h3>Team Colors</h3>
+          <div class="team-color-grid">
+            <label class="field">
+              <span>Player Team</span>
+              <input id="playerTeamNameInput" type="text" maxlength="20" placeholder="Star Puffs">
+            </label>
+            <label class="field">
+              <span>Player Color</span>
+              <input id="playerColorInput" type="color" value="#7ef3b8">
+            </label>
+            <label class="field">
+              <span>Opponent Team</span>
+              <input id="enemyTeamNameInput" type="text" maxlength="20" placeholder="Nebula Floofs">
+            </label>
+            <label class="field">
+              <span>Opponent Color</span>
+              <input id="enemyColorInput" type="color" value="#ff9fb4">
+            </label>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h3>Player Squad</h3>
+          <div class="character-grid">
+            <label class="field">
+              <span>Alien 1 Name</span>
+              <input class="player-name-input" type="text" maxlength="18" value="Momo">
+            </label>
+            <label class="field">
+              <span>Alien 1 Skin</span>
+              <select class="player-skin-input">
+                <option value="comet">Comet Puff</option>
+                <option value="moss">Moss Floof</option>
+                <option value="coral">Coral Nova</option>
+                <option value="frost">Frost Sprout</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Alien 2 Name</span>
+              <input class="player-name-input" type="text" maxlength="18" value="Bibi">
+            </label>
+            <label class="field">
+              <span>Alien 2 Skin</span>
+              <select class="player-skin-input">
+                <option value="comet">Comet Puff</option>
+                <option value="moss" selected>Moss Floof</option>
+                <option value="coral">Coral Nova</option>
+                <option value="frost">Frost Sprout</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Alien 3 Name</span>
+              <input class="player-name-input" type="text" maxlength="18" value="Lulu">
+            </label>
+            <label class="field">
+              <span>Alien 3 Skin</span>
+              <select class="player-skin-input">
+                <option value="comet">Comet Puff</option>
+                <option value="moss">Moss Floof</option>
+                <option value="coral" selected>Coral Nova</option>
+                <option value="frost">Frost Sprout</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Alien 4 Name</span>
+              <input class="player-name-input" type="text" maxlength="18" value="Nori">
+            </label>
+            <label class="field">
+              <span>Alien 4 Skin</span>
+              <select class="player-skin-input">
+                <option value="comet">Comet Puff</option>
+                <option value="moss">Moss Floof</option>
+                <option value="coral">Coral Nova</option>
+                <option value="frost" selected>Frost Sprout</option>
+              </select>
+            </label>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h3>Opponent Squad</h3>
+          <div class="character-grid">
+            <label class="field">
+              <span>Alien 1</span>
+              <input class="enemy-name-input" type="text" maxlength="18" value="Fizz">
+            </label>
+            <label class="field">
+              <span>Alien 2</span>
+              <input class="enemy-name-input" type="text" maxlength="18" value="Puff">
+            </label>
+            <label class="field">
+              <span>Alien 3</span>
+              <input class="enemy-name-input" type="text" maxlength="18" value="Tiki">
+            </label>
+            <label class="field">
+              <span>Alien 4</span>
+              <input class="enemy-name-input" type="text" maxlength="18" value="Zuzu">
+            </label>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen game-screen" id="gameScreen">
+    <canvas id="gameCanvas"></canvas>
+
+    <div class="game-hud" id="hudPanel">
+      <div class="hud-row">
+        <span class="hud-label">Profile</span>
+        <strong id="hudProfile">Guest</strong>
+      </div>
+      <div class="hud-row">
+        <span class="hud-label">Turn</span>
+        <strong id="hudTurn">Waiting</strong>
+      </div>
+      <div class="hud-row">
+        <span class="hud-label">Wind</span>
+        <strong id="hudWind">0</strong>
+      </div>
+      <div class="hud-row">
+        <span class="hud-label">Timer</span>
+        <strong id="hudTimer">0</strong>
+      </div>
+      <div class="hud-row">
+        <span class="hud-label">Room</span>
+        <strong id="hudRoom">Offline</strong>
+      </div>
+      <div class="hud-row">
+        <span class="hud-label">Weapon</span>
+        <strong id="hudWeapon">Shot</strong>
+      </div>
+      <div class="progress-block">
+        <span class="hud-label">Shot Power</span>
+        <div class="progress-track">
+          <div class="progress-fill" id="powerFill"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="game-actions">
+      <button id="saveBtn">Save Match</button>
+      <button id="skipBtn">Skip Turn</button>
+      <button id="setupBtn">Setup</button>
+    </div>
+
+    <div class="control-hint">
+      <span><strong>A / D</strong> Move</span>
+      <span><strong>W</strong> Jump</span>
+      <span><strong>Hold Space</strong> Aim + power</span>
+      <span><strong>Release Space</strong> Fire</span>
+      <span><strong>Ctrl</strong> Toggle Grenade</span>
+    </div>
+
+    <div class="overlay-message" id="overlayMessage">
+      Login and start a match to begin commanding your alien squad.
+    </div>
+  </section>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

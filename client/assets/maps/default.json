@@ -1,0 +1,4 @@
+{
+  "name": "default",
+  "scenarios": ["forest", "city", "lake", "space"]
+}
