@@ -15,7 +15,7 @@ Project Group Members:
 
 Project URL
 
-* Paste your hosted web application URL here so I can test it
+* Working URL https://groupm.stu.researchatmun.ca/ 
 
 Project Videos:
 
